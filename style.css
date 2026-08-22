@@ -1,0 +1,74 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #504a4a;
+    color: #fff;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.my_card {
+    background-color: white;
+    color: #000000;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.icons {
+    border-radius: 8px;
+    object-fit: cover;
+    width: 15%;
+    max-width: 45px;
+    height: auto;
+    margin: 0 8px;
+}
+
+.user_picture {
+    width: 30%;
+    max-width: 110px;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.change_backround_button {
+    background-color: #fff;
+    color: #000000;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 20px;
+    font-weight: bold;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+/* if the hmtl has a checked button called backround and the body has it, change the color*/
+
+html:has(#change_backround_checkbox:checked),
+body:has(#change_backround_checkbox:checked) {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+html:has(#change_backround_checkbox:checked) .my_card,
+body:has(#change_backround_checkbox:checked) .my_card{
+    background-color: black;
+    color: white;
+}
+
+#change_backround_checkbox:checked ~ .change_backround_button {
+    background-color: #000000;
+    color:  #ffffff;
+}
