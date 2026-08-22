@@ -19,8 +19,9 @@ body {
     border-radius: 20px;
     padding: 1.5rem;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    width: 90%;
-    max-width: 405px;
+    width: 82%;          /* תופס רוחב נוח ומאוזן בטלפון (במקום 90%) */
+    max-width: 380px;    /* מגביל את הרוחב למחשב כדי שלא יהיה רחב מדי */
+    margin: 0 auto;      /* שומר על מרכוז מושלם */
     text-align: center;
     transition: background-color 0.4s ease, color 0.4s ease;
 }
