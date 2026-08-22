@@ -17,10 +17,10 @@ body {
     background-color: white;
     color: #000000;
     border-radius: 20px;
-    padding: 2rem;
+    padding: 1.5rem;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    width: 90%;
-    max-width: 400px;
+    width: 92%;
+    max-width: 420px;
     text-align: center;
     transition: background-color 0.4s ease, color 0.4s ease;
 }
