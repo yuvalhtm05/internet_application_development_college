@@ -20,7 +20,7 @@ body {
     padding: 1.5rem;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     width: 90%;
-    max-width: 410px;
+    max-width: 405px;
     text-align: center;
     transition: background-color 0.4s ease, color 0.4s ease;
 }
