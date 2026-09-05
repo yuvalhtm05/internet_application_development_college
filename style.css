@@ -1,78 +1,246 @@
-html,
+:root {
+    /* משתני צבע למצב בהיר */
+    --bg-color: #f0f4f8;
+    --card-bg: #ffffff;
+    --text-main: #333333;
+    --text-muted: #666666;
+    --primary-color: #9b59b6; /* סגול של גנגר */
+    --accent-color: #ffcb05; /* צהוב פוקימון */
+    --border-color: #e1e8ed;
+    --card-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* משתני צבע למצב כהה (מופעל כשהצ'קבוקס לחוץ) */
+#change_backround_checkbox:checked ~ .my_card {
+    --card-bg: #222222;
+    --text-main: #f0f0f0;
+    --text-muted: #aaaaaa;
+    --border-color: #444444;
+    --card-shadow: 0 10px 40px rgba(155, 89, 182, 0.3);
+}
+
+#change_backround_checkbox:checked ~ .page_background {
+    background-color: #1a1a2e;
+}
+
 body {
     margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100vh;
+    font-family: 'Outfit', sans-serif;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #504a4a;
-    color: #fff;
-    transition: background-color 0.4s ease, color 0.4s ease;
+    min-height: 100vh;
+    position: relative;
 }
 
+.page_background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    transition: background-color 0.4s ease;
+    z-index: -1;
+}
+
+/* עיצוב כפתור יום/לילה */
+.change_backround_button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    background: var(--card-bg);
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    z-index: 10;
+    transition: transform 0.3s ease, background 0.4s ease;
+    user-select: none;
+}
+
+.change_backround_button:hover {
+    transform: scale(1.1);
+}
+
+/* עיצוב הכרטיס המרכזי */
 .my_card {
-    background-color: white;
-    color: #000000;
+    background-color: var(--card-bg);
+    width: 100%;
+    max-width: 380px;
     border-radius: 20px;
-    padding: 1.5rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    
-    /* התיקון למניעת היצמדות לצדדים */
-    width: 85%;          /* ישאיר רווח של 7.5% מכל צד במסך קטן */
-    max-width: 360px;    /* מקסימום רוחב במחשב */
-    margin: 20px auto;   /* מוסיף מרווח אנכי מלמעלה ומלמטה וממרכז אופקית */
-    
+    padding: 30px;
+    box-shadow: var(--card-shadow);
+    transition: all 0.4s ease;
     text-align: center;
-    transition: background-color 0.4s ease, color 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    border: 4px solid var(--accent-color);
 }
 
-.icons {
-    border-radius: 8px;
-    object-fit: cover;
-    width: 15%;
-    max-width: 45px;
-    height: auto;
-    margin: 0 8px;
+/* הוספת פס עליון הולוגרפי/פוקימון */
+.my_card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(135deg, var(--primary-color), #735797);
+    z-index: 0;
+}
+
+.card_header {
+    position: relative;
+    z-index: 1;
+}
+
+.image_container {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    padding: 5px;
+    background: var(--accent-color);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .user_picture {
-    width: 30%;
-    max-width: 110px;
-    height: auto;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 1rem;
-}
-
-.change_backround_button {
     background-color: #fff;
-    color: #000000;
-    padding: 10px 20px;
+}
+
+h1 {
+    margin: 0;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    color: var(--text-main);
+    line-height: 1.8;
+}
+
+h2 {
+    margin: 5px 0 15px;
+    font-size: 16px;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+/* תגים (Types) */
+.pokemon_types {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.type {
+    padding: 5px 15px;
     border-radius: 20px;
-    cursor: pointer;
-    display: inline-block;
-    margin-bottom: 20px;
+    font-size: 12px;
     font-weight: bold;
-    transition: background-color 0.4s ease, color 0.4s ease;
-}
-/* if the hmtl has a checked button called backround and the body has it, change the color*/
-
-html:has(#change_backround_checkbox:checked),
-body:has(#change_backround_checkbox:checked) {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-html:has(#change_backround_checkbox:checked) .my_card,
-body:has(#change_backround_checkbox:checked) .my_card{
-    background-color: black;
     color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: inset 0 -2px 0 rgba(0,0,0,0.2);
 }
 
-#change_backround_checkbox:checked ~ .change_backround_button {
-    background-color: #000000;
-    color:  #ffffff;
+.type.poison { background-color: #A33EA1; }
+.type.ghost { background-color: #735797; }
+
+.card_body {
+    position: relative;
+    z-index: 1;
+    color: var(--text-main);
+}
+
+.card_body p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: var(--text-muted);
+}
+
+/* חלון סטטיסטיקות */
+.stats_container {
+    background: rgba(0,0,0,0.04);
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    transition: background 0.4s ease;
+}
+
+#change_backround_checkbox:checked ~ .my_card .stats_container {
+    background: rgba(255,255,255,0.05);
+}
+
+.stat_row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.stat_row:last-child {
+    margin-bottom: 0;
+}
+
+.stat_name {
+    width: 45px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: left;
+    color: var(--text-main);
+}
+
+.stat_bar {
+    flex-grow: 1;
+    height: 10px;
+    background-color: var(--border-color);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.stat_fill {
+    height: 100%;
+    border-radius: 5px;
+}
+
+/* התאמת רמות הסטטיסטיקה */
+.stat_fill.hp { width: 85%; background-color: #FF5959; }
+.stat_fill.atk { width: 70%; background-color: #F5AC78; }
+.stat_fill.def { width: 95%; background-color: #FAE078; }
+
+/* גריד כפתורים חכמים */
+.button_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.action_btn {
+    display: block;
+    padding: 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    color: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.action_btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.linkedin_btn { background-color: #0077b5; }
+.github_btn { background-color: #24292e; }
+.email_btn { background-color: #ea4335; }
+.call_btn { background-color: #25d366; }
+
+#change_backround_checkbox:checked ~ .my_card .github_btn {
+    background-color: #555555;
 }
