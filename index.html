@@ -3,56 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yuval Hatami - Business Card</title>
+    <title>Yuval Hatami - Player Card</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Outfit:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="page_background"></div>
+    <!-- ה-Checkbox חייב להיות הכי למעלה כדי לשלוט על כל מה שתחתיו -->
+    <input type="checkbox" id="theme_toggle" style="display: none;">
 
-    <input type="checkbox" id="change_backround_checkbox" style="display: none;">
-    <label for="change_backround_checkbox" class="change_backround_button">
-        🌙/☀️
-    </label>
+    <!-- הראפר שעוטף את כל העמוד ומשנה צבע -->
+    <div class="main_wrapper">
 
-    <div class="my_card">
-        <div class="card_header">
-            <div class="image_container">
-                <img src="gengar_pic.jpeg" alt="Gengar Avatar" class="user_picture">
-            </div>
+        <label for="theme_toggle" class="theme_btn">
+            🌙/☀️
+        </label>
 
-            <h1>Yuval Hatami</h1>
-            <h2>SecOps & Developer</h2>
-
-            <div class="pokemon_types">
-                <span class="type poison">Security</span>
-                <span class="type ghost">Code</span>
-            </div>
-        </div>
-
-        <div class="card_body">
-            <p>Level 25 Tech enthusiast. Exploring algorithms, network security, and building solid infrastructure. Always ready for the next battle.</p>
-
-            <div class="stats_container">
-                <div class="stat_row">
-                    <span class="stat_name">HP</span>
-                    <div class="stat_bar"><div class="stat_fill hp"></div></div>
+        <div class="my_card">
+            <!-- Header -->
+            <div class="card_header">
+                <div class="image_container">
+                    <img src="gengar_pic.jpeg" alt="Avatar" class="user_picture">
                 </div>
-                <div class="stat_row">
-                    <span class="stat_name">ATK</span>
-                    <div class="stat_bar"><div class="stat_fill atk"></div></div>
-                </div>
-                <div class="stat_row">
-                    <span class="stat_name">DEF</span>
-                    <div class="stat_bar"><div class="stat_fill def"></div></div>
+                <h1>Yuval Hatami</h1>
+                <h2>SecOps & CS Student</h2>
+
+                <div class="pokemon_types">
+                    <span class="type poison">SecOps</span>
+                    <span class="type ghost">Dev</span>
+                    <span class="type electric">Hardware</span>
                 </div>
             </div>
 
-            <div class="button_grid">
-                <a href="https://www.linkedin.com/in/yuval-hatami" class="action_btn linkedin_btn">LinkedIn</a>
-                <a href="https://github.com/yuvalhtm05" class="action_btn github_btn">GitHub</a>
-                <a href="mailto:yuvalhtm05@gmail.com" class="action_btn email_btn">Email</a>
-                <a href="tel:+972558823232" class="action_btn call_btn">Call Me</a>
+            <!-- Body -->
+            <div class="card_body">
+                <p>Level 25. Currently exploring data mining, C/C++ memory mechanics, and network security algorithms. Always ready for the next challenge.</p>
+
+                <!-- Base Stats -->
+                <h3 class="section_title">Base Stats</h3>
+                <div class="stats_container">
+                    <div class="stat_row">
+                        <span class="stat_name">COD</span>
+                        <div class="stat_bar"><div class="stat_fill hp" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="stat_row">
+                        <span class="stat_name">SEC</span>
+                        <div class="stat_bar"><div class="stat_fill atk" style="width: 90%;"></div></div>
+                    </div>
+                    <div class="stat_row">
+                        <span class="stat_name">GYM</span>
+                        <div class="stat_bar"><div class="stat_fill def" style="width: 75%;"></div></div>
+                    </div>
+                </div>
+
+                <!-- Inventory (Scrollable content) -->
+                <h3 class="section_title">Current Inventory</h3>
+                <ul class="inventory_list">
+                    <li><strong>Main Weapon:</strong> PC Build with Gigabyte Z790M AORUS ELITE AX & RTX 5080</li>
+                    <li><strong>Energy Potion:</strong> Espresso via Turin DF54 & Breville Bambino</li>
+                    <li><strong>Mount:</strong> Seat Ibiza (Custom Audio Equipped)</li>
+                </ul>
+
+                <!-- Side Quests -->
+                <h3 class="section_title">Side Quests</h3>
+                <ul class="inventory_list">
+                    <li>Amateur League Basketball</li>
+                    <li>Virtual Riot & Barely Alive Festivals</li>
+                    <li>Watching One Piece & Jobless Reincarnation</li>
+                </ul>
+
+                <!-- Action Buttons -->
+                <div class="button_grid">
+                    <a href="https://www.linkedin.com/in/yuval-hatami" class="action_btn linkedin_btn">LinkedIn</a>
+                    <a href="https://github.com/yuvalhtm05" class="action_btn github_btn">GitHub</a>
+                    <a href="mailto:yuvalhtm05@gmail.com" class="action_btn email_btn">Email</a>
+                    <a href="tel:+972558823232" class="action_btn call_btn">Call Me</a>
+                </div>
             </div>
         </div>
     </div>

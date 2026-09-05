@@ -1,92 +1,87 @@
 :root {
     /* משתני צבע למצב בהיר */
-    --bg-color: #f0f4f8;
+    --bg-page: #e9eff5;
     --card-bg: #ffffff;
-    --text-main: #333333;
-    --text-muted: #666666;
-    --primary-color: #9b59b6; /* סגול של גנגר */
-    --accent-color: #ffcb05; /* צהוב פוקימון */
+    --text-main: #2c3e50;
+    --text-muted: #555555;
+    --primary-color: #9b59b6;
+    --accent-color: #f1c40f;
     --border-color: #e1e8ed;
-    --card-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-/* משתני צבע למצב כהה (מופעל כשהצ'קבוקס לחוץ) */
-#change_backround_checkbox:checked ~ .my_card {
-    --card-bg: #222222;
-    --text-main: #f0f0f0;
-    --text-muted: #aaaaaa;
-    --border-color: #444444;
-    --card-shadow: 0 10px 40px rgba(155, 89, 182, 0.3);
-}
-
-#change_backround_checkbox:checked ~ .page_background {
-    background-color: #1a1a2e;
+    --list-bg: rgba(0,0,0,0.03);
+    --card-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
 body {
     margin: 0;
     font-family: 'Outfit', sans-serif;
+}
+
+/* העטיפה של כל הדף - מאפשרת גלילה ושולטת על הרקע הכללי */
+.main_wrapper {
+    min-height: 100vh;
+    background-color: var(--bg-page);
+    transition: background-color 0.4s ease;
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    position: relative;
+    align-items: flex-start; /* מאפשר גלילה למטה */
+    padding: 60px 20px; /* מרווח מלמעלה ומלמטה לגלילה נוחה */
+    box-sizing: border-box;
 }
 
-.page_background {
+/* --- הגדרות מצב לילה (Dark Mode) --- */
+#theme_toggle:checked ~ .main_wrapper {
+    --bg-page: #121212;
+    --card-bg: #1e1e24;
+    --text-main: #f5f6fa;
+    --text-muted: #b2bec3;
+    --border-color: #333333;
+    --list-bg: rgba(255,255,255,0.05);
+    --card-shadow: 0 15px 40px rgba(155, 89, 182, 0.2);
+}
+
+/* כפתור הירח/שמש */
+.theme_btn {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--bg-color);
-    transition: background-color 0.4s ease;
-    z-index: -1;
-}
-
-/* עיצוב כפתור יום/לילה */
-.change_backround_button {
-    position: absolute;
     top: 20px;
     right: 20px;
-    font-size: 20px;
+    font-size: 24px;
     cursor: pointer;
     background: var(--card-bg);
-    padding: 10px;
+    padding: 10px 12px;
     border-radius: 50%;
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    z-index: 10;
+    z-index: 100;
     transition: transform 0.3s ease, background 0.4s ease;
     user-select: none;
+    border: 2px solid var(--border-color);
 }
 
-.change_backround_button:hover {
-    transform: scale(1.1);
+.theme_btn:hover {
+    transform: scale(1.1) rotate(15deg);
 }
 
-/* עיצוב הכרטיס המרכזי */
+/* עיצוב הכרטיס */
 .my_card {
     background-color: var(--card-bg);
     width: 100%;
-    max-width: 380px;
-    border-radius: 20px;
-    padding: 30px;
+    max-width: 400px;
+    border-radius: 24px;
+    padding: 35px 25px;
     box-shadow: var(--card-shadow);
     transition: all 0.4s ease;
     text-align: center;
     position: relative;
-    overflow: hidden;
     border: 4px solid var(--accent-color);
+    overflow: hidden;
 }
 
-/* הוספת פס עליון הולוגרפי/פוקימון */
 .my_card::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 120px;
+    height: 130px;
     background: linear-gradient(135deg, var(--primary-color), #735797);
     z-index: 0;
 }
@@ -97,13 +92,13 @@ body {
 }
 
 .image_container {
-    width: 120px;
-    height: 120px;
+    width: 130px;
+    height: 130px;
     margin: 0 auto 15px;
     border-radius: 50%;
-    padding: 5px;
+    padding: 6px;
     background: var(--accent-color);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
 }
 
 .user_picture {
@@ -117,30 +112,31 @@ body {
 h1 {
     margin: 0;
     font-family: 'Press Start 2P', cursive;
-    font-size: 14px;
+    font-size: 13px;
     color: var(--text-main);
-    line-height: 1.8;
+    line-height: 2;
 }
 
 h2 {
-    margin: 5px 0 15px;
+    margin: 5px 0 20px;
     font-size: 16px;
     color: var(--text-muted);
     font-weight: 400;
 }
 
-/* תגים (Types) */
+/* תגים */
 .pokemon_types {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
     margin-bottom: 25px;
 }
 
 .type {
-    padding: 5px 15px;
+    padding: 6px 14px;
     border-radius: 20px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: bold;
     color: white;
     text-transform: uppercase;
@@ -150,37 +146,44 @@ h2 {
 
 .type.poison { background-color: #A33EA1; }
 .type.ghost { background-color: #735797; }
+.type.electric { background-color: #F7D02C; color: #333; }
 
 .card_body {
     position: relative;
     z-index: 1;
     color: var(--text-main);
+    text-align: left; /* יישור לשמאל לתוכן טקסטואלי */
 }
 
 .card_body p {
     font-size: 14px;
     line-height: 1.6;
     margin-bottom: 25px;
+    text-align: center;
     color: var(--text-muted);
 }
 
-/* חלון סטטיסטיקות */
-.stats_container {
-    background: rgba(0,0,0,0.04);
-    padding: 15px;
-    border-radius: 12px;
-    margin-bottom: 25px;
-    transition: background 0.4s ease;
+.section_title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    margin: 25px 0 15px;
+    color: var(--text-main);
+    border-bottom: 2px dashed var(--border-color);
+    padding-bottom: 8px;
 }
 
-#change_backround_checkbox:checked ~ .my_card .stats_container {
-    background: rgba(255,255,255,0.05);
+/* סטטיסטיקות */
+.stats_container {
+    background: var(--list-bg);
+    padding: 15px;
+    border-radius: 12px;
+    transition: background 0.4s ease;
 }
 
 .stat_row {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .stat_row:last-child {
@@ -188,52 +191,85 @@ h2 {
 }
 
 .stat_name {
-    width: 45px;
+    width: 40px;
     font-size: 12px;
     font-weight: 600;
-    text-align: left;
     color: var(--text-main);
 }
 
 .stat_bar {
     flex-grow: 1;
-    height: 10px;
+    height: 12px;
     background-color: var(--border-color);
-    border-radius: 5px;
+    border-radius: 6px;
     overflow: hidden;
 }
 
 .stat_fill {
     height: 100%;
-    border-radius: 5px;
+    border-radius: 6px;
 }
 
-/* התאמת רמות הסטטיסטיקה */
-.stat_fill.hp { width: 85%; background-color: #FF5959; }
-.stat_fill.atk { width: 70%; background-color: #F5AC78; }
-.stat_fill.def { width: 95%; background-color: #FAE078; }
+.stat_fill.hp { background-color: #FF5959; }
+.stat_fill.atk { background-color: #F5AC78; }
+.stat_fill.def { background-color: #FAE078; }
 
-/* גריד כפתורים חכמים */
+/* רשימות Inventory / Quests */
+.inventory_list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
+    color: var(--text-muted);
+    background: var(--list-bg);
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.inventory_list li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 20px;
+}
+
+.inventory_list li:last-child {
+    margin-bottom: 0;
+}
+
+.inventory_list li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-size: 10px;
+    color: var(--primary-color);
+}
+
+/* כפתורים */
 .button_grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
+    margin-top: 30px;
 }
 
 .action_btn {
     display: block;
     padding: 12px;
-    border-radius: 10px;
+    border-radius: 12px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 14px;
     color: #fff;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s;
 }
 
 .action_btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    filter: brightness(1.1);
 }
 
 .linkedin_btn { background-color: #0077b5; }
@@ -241,6 +277,6 @@ h2 {
 .email_btn { background-color: #ea4335; }
 .call_btn { background-color: #25d366; }
 
-#change_backround_checkbox:checked ~ .my_card .github_btn {
-    background-color: #555555;
+#theme_toggle:checked ~ .main_wrapper .github_btn {
+    background-color: #444444;
 }
